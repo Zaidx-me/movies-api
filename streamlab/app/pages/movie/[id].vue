@@ -13,7 +13,8 @@
           <h1 class="text-4xl font-bold mb-3">{{ movie.title }}</h1>
           <p class="text-gray-300 max-w-2xl mb-6 line-clamp-3">{{ movie.description }}</p>
           <div class="flex gap-4">
-            <NuxtLink :to="`/player/${movie.id}?detail_path=${movie.detailPath || movie.slug}`" class="bg-red-500 hover:bg-red-600 px-8 py-3 rounded-xl font-bold transition">▶ Play Now</NuxtLink>
+            <NuxtLink v-if="movie.hasResource" :to="`/player/${movie.id}?detail_path=${movie.detailPath || movie.slug}`" class="bg-red-500 hover:bg-red-600 px-8 py-3 rounded-xl font-bold transition">▶ Play Now</NuxtLink>
+            <span v-else class="bg-gray-600 px-8 py-3 rounded-xl font-bold cursor-not-allowed opacity-60">No streams available</span>
             <NuxtLink :to="`/movie/${movie.slug}`" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-xl font-semibold transition">Details</NuxtLink>
           </div>
         </div>

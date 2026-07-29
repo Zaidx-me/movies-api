@@ -32,11 +32,17 @@ async function load() {
   loading.value = true; error.value = null
   try {
     const streamData = await getStream(id, detailPath, se, ep)
-    video.value = { id, title: detailPath, duration: 0 }
-    sources.value = (streamData?.sources || []).map((s: any) => ({
+    const sources = (streamData?.sources || []).map((s: any) => ({
       ...s,
       type: s.format?.toLowerCase()?.includes('dash') ? 'dash' : 'hls',
     }))
+    if (!streamData?.has_resource && sources.length === 0) {
+      error.value = 'No streaming source available for this title.'
+      loading.value = false
+      return
+    }
+    video.value = { id, title: detailPath, duration: 0 }
+    sources.value = sources
     try {
       const capData = await getCaptions(id, detailPath, se, ep)
       subtitles.value = (capData?.captions || capData?.subtitles || []).map((c: any) => ({

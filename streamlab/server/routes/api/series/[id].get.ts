@@ -14,5 +14,6 @@ export default defineEventHandler(async (event) => {
     rating: subject.imdbRatingValue || subject.rating || '',
     id: subject.subjectId || slug,
     slug: subject.detailPath || slug,
+    hasResource: subject.hasResource ?? false,
   }
 })

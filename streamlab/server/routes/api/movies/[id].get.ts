@@ -16,5 +16,6 @@ export default defineEventHandler(async (event) => {
     cast: subject.staffList || [],
     id: subject.subjectId || slug,
     slug: subject.detailPath || slug,
+    hasResource: subject.hasResource ?? false,
   }
 })

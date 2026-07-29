@@ -8,7 +8,8 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-8">
           <h1 class="text-4xl font-bold mb-2">{{ series.title }}</h1>
           <p class="text-gray-300 mb-4 line-clamp-2">{{ series.description }}</p>
-          <NuxtLink :to="`/player/${series.id}?detail_path=${series.slug}`" class="bg-red-500 hover:bg-red-600 px-8 py-3 rounded-xl font-bold transition inline-block">▶ Play Now</NuxtLink>
+          <NuxtLink v-if="series.hasResource" :to="`/player/${series.id}?detail_path=${series.slug}`" class="bg-red-500 hover:bg-red-600 px-8 py-3 rounded-xl font-bold transition inline-block">▶ Play Now</NuxtLink>
+          <span v-else class="bg-gray-600 px-8 py-3 rounded-xl font-bold cursor-not-allowed opacity-60 inline-block">No streams available</span>
         </div>
       </div>
       <SeasonTabs :seasons="series.seasons" :title="series.title" :id="series.id" :slug="series.slug" />
