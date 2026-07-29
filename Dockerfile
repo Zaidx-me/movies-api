@@ -1,5 +1,7 @@
-FROM python:3.11-slim
+FROM node:20-alpine
 WORKDIR /app
-COPY . .
-RUN pip install -r requirements.txt
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "3001"]
+COPY streamlab/. .
+RUN corepack enable pnpm && pnpm install --frozen-lockfile
+RUN pnpm build
+EXPOSE 3000
+CMD ["node", ".output/server/index.mjs"]
