@@ -1,0 +1,42 @@
+{
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "quality": "Quality",
+    "subtitles": "Subtitles",
+    "audio": "Audio Track",
+    "speed": "Speed",
+    "fullscreen": "Fullscreen",
+    "pip": "Picture in Picture",
+    "resumeFrom": "Resume from",
+    "retry": "Retry",
+    "back": "Back"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  },
+  "home": {
+    "title": "Welcome to StreamLab"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search movies...",
+    "noResults": "No results found"
+  },
+  "movie": {
+    "cast": "Cast",
+    "genres": "Genres",
+    "play": "Play Now"
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Create Account"
+  },
+  "profile": {
+    "title": "My Profile",
+    "history": "Watch History",
+    "continueWatching": "Continue Watching"
+  }
+}

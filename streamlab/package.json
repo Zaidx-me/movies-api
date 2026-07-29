@@ -1,0 +1,31 @@
+{
+  "name": "streamlab",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^10.5.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "@pinia/nuxt": "^1.0.1",
+    "@vueuse/core": "^14.3.0",
+    "hls.js": "^1.6.16",
+    "jose": "^6.2.4",
+    "nuxt": "^4.5.1",
+    "pinia": "^4.0.2",
+    "video.js": "^8.23.9",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/video.js": "^7.3.58",
+    "nuxt-og-image": "^6.7.4"
+  }
+}
