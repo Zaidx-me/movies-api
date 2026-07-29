@@ -26,7 +26,7 @@ const error = ref<string | null>(null)
 
 async function load() {
   loading.value = true; error.value = null
-  try { series.value = await getDetail(id)?.data || await getDetail(id) } catch (e: any) { error.value = e?.message || 'Failed' }
+  try { series.value = await getDetail(id) } catch (e: any) { error.value = e?.message || 'Failed' }
   finally { loading.value = false }
 }
 function retry() { load() }

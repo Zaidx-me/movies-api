@@ -34,7 +34,7 @@ const error = ref<string | null>(null)
 
 async function load() {
   loading.value = true; error.value = null
-  try { movie.value = await getDetail(id)?.data || await getDetail(id) } catch (e: any) { error.value = e?.message || 'Failed to load' }
+  try { movie.value = await getDetail(id) } catch (e: any) { error.value = e?.message || 'Failed to load' }
   finally { loading.value = false }
 }
 function retry() { load() }

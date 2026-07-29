@@ -20,7 +20,7 @@ const detailPath = (route.query.detail_path as string) || ''
 const se = Number(route.query.se) || 1
 const ep = Number(route.query.ep) || 1
 
-const { getStream } = useMovieboxApi()
+const { getStream, getCaptions } = useMovieboxApi()
 const player = usePlayer()
 const video = ref<any>(null)
 const sources = ref<any[]>([])
@@ -38,7 +38,12 @@ async function load() {
       type: s.format?.toLowerCase()?.includes('dash') ? 'dash' : 'hls',
     }))
     try {
-      const capData = await getStream(id, detailPath, se, ep)
+      const capData = await getCaptions(id, detailPath, se, ep)
+      subtitles.value = (capData?.captions || capData?.subtitles || []).map((c: any) => ({
+        ...c,
+        language: c.language || c.lang || 'en',
+        label: c.label || c.language || 'English',
+      }))
     } catch { /* subtitles optional */ }
   } catch (e: any) {
     error.value = e?.message || 'Failed to load stream'
