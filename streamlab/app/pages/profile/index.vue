@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-5xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">{{ $t('profile.title') }}</h1>
+    <h1 class="text-3xl font-bold mb-8">My Profile</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="bg-[#141420] rounded-xl p-6 border border-white/10">
@@ -10,7 +10,7 @@
       </div>
 
       <div class="md:col-span-2">
-        <h2 class="text-lg font-semibold mb-4">{{ $t('profile.continueWatching') }}</h2>
+        <h2 class="text-lg font-semibold mb-4">Continue Watching</h2>
         <div v-if="items.length === 0" class="text-gray-500 text-sm">No items yet — start watching something!</div>
         <div v-else class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <div v-for="item in items" :key="item.contentId" class="bg-white/5 rounded-xl p-4 border border-white/10 relative group">

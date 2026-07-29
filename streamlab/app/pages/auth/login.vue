@@ -2,7 +2,7 @@
   <div class="flex items-center justify-center min-h-screen bg-[#0a0a0f] p-4">
     <div class="bg-[#141420] rounded-2xl p-8 w-full max-w-md border border-white/10">
       <h1 class="text-3xl font-bold mb-2 text-center">StreamLab</h1>
-      <p class="text-gray-400 text-center mb-8">{{ $t('auth.login') }}</p>
+      <p class="text-gray-400 text-center mb-8">Sign In</p>
       <form @submit.prevent="handleLogin" class="space-y-4">
         <div>
           <label class="block text-sm font-medium mb-1 text-gray-300">Email</label>

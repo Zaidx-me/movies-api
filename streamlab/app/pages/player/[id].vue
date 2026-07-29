@@ -3,10 +3,10 @@
     <button @click="goBack" class="absolute top-4 left-4 z-50 bg-black/60 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-black/80 transition">← Back</button>
     <div class="flex-1 flex items-center justify-center">
       <VideoPlayer v-if="video" :video="video" :sources="sources" :subtitles="subtitles" />
-      <div v-else-if="loading" class="text-gray-400 p-8">{{ $t('common.loading') }}</div>
+      <div v-else-if="loading" class="text-gray-400 p-8">Loading...</div>
       <div v-else-if="error" class="text-red-400 p-8 text-center">
         <p>{{ error }}</p>
-        <button @click="retry" class="text-blue-400 underline mt-4">{{ $t('common.retry') }}</button>
+        <button @click="retry" class="text-blue-400 underline mt-4">Retry</button>
       </div>
     </div>
   </div>

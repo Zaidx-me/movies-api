@@ -2,14 +2,14 @@
   <div class="max-w-7xl mx-auto px-4 py-8">
     <SearchInput v-model="query" @search="onSearch" />
     <div v-if="loading" class="flex justify-center py-16">
-      <span class="text-gray-400">{{ $t('common.loading') }}</span>
+      <span class="text-gray-400">Loading...</span>
     </div>
     <div v-else-if="error" class="text-center py-16">
       <p class="text-red-400">{{ error }}</p>
-      <button @click="onSearch" class="text-blue-400 underline mt-4">{{ $t('common.retry') }}</button>
+      <button @click="onSearch" class="text-blue-400 underline mt-4">Retry</button>
     </div>
     <div v-else-if="searchData && searchData.items && searchData.items.length === 0" class="text-center py-16">
-      <p class="text-gray-400">{{ $t('search.noResults') }}</p>
+      <p class="text-gray-400">No results found</p>
     </div>
     <template v-else-if="searchData?.items">
       <h2 class="text-xl font-semibold mb-6">{{ searchData.total }} results for "{{ query }}"</h2>

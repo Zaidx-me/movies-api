@@ -6,7 +6,19 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+
   ],
+
+  i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr' },
+      { code: 'hi', iso: 'hi-IN', file: 'hi.json', dir: 'ltr' },
+    ],
+    lazy: true,
+    langDir: 'app/locales/',
+  },
 
   routeRules: {
     '/': { ssr: true, swr: 60 },
@@ -17,6 +29,11 @@ export default defineNuxtConfig({
     '/category/**': { ssr: true, swr: 60 },
     '/auth/**': { ssr: false },
     '/profile/**': { ssr: false },
+  },
+
+  middleware: {
+    auth: '~/middleware/auth',
+    guest: '~/middleware/guest',
   },
 
   css: ['~/assets/css/main.css'],
