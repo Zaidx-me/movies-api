@@ -1,105 +1,19 @@
+@import 'video.js/dist/video-js.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import 'video.js/dist/video-js.css';
-
 :root {
+  --color-primary: #ff3d71;
+  --color-secondary: #3366ff;
+  --color-accent: #00f2ff;
   --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-surface-hover: #1a1a25;
-  --color-border: #1f1f2e;
-  --color-text: #ffffff;
-  --color-text-secondary: #9ca3af;
-  --color-accent: #ff3d71;
-  --color-accent-hover: #ff5c8a;
-  --header-height: 64px;
-  --sidebar-width: 240px;
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-glass: rgba(255, 255, 255, 0.06);
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #2a2a3a transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: #2a2a3a;
-  border-radius: 3px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: #3a3a4a;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  min-height: 100vh;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-}
-
-.layout-enter-active,
-.layout-leave-active {
-  transition: opacity 0.15s ease;
-}
-
-.layout-enter-from,
-.layout-leave-to {
-  opacity: 0;
-}
-
-@layer components {
-  .btn-primary {
-    @apply bg-[#ff3d71] hover:bg-[#ff2c8a] text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200 active:scale-95;
-  }
-
-  .btn-secondary {
-    @apply bg-[#1a1a25] hover:bg-[#2a2a3a] text-white font-medium px-6 py-2.5 rounded-lg border border-[#2a2a3a] transition-all duration-200 active:scale-95;
-  }
-
-  .input-field {
-    @apply w-full bg-[#12121a] border border-[#2a2a3a] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#ff3d5] focus:outline-none transition-colors duration-200;
-  }
-
-  .glass {
-    @apply bg-[#12121a]/80 backdrop-blur-xl border border-[#2a2a3a]/50;
-  }
-}
-
-.video-js {
-  font-size: 16px;
-}
-
-.video-js .vjs-big-play-button {
-  border-radius: 50%;
-  background-color: rgba(255, 61, 113, 0.8);
-  border: none;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.video-js:hover .vjs-big-play-button {
-  background-color: rgb(255, 61, 113);
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Outfit', sans-serif; background: var(--color-bg); color: #ffffff; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
