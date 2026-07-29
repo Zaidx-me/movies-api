@@ -12,8 +12,6 @@
 const route = useRoute()
 const id = route.params.id as string
 const detailPath = (route.query.detail_path as string) || ''
-const se = Number(route.query.se) || 1
-const ep = Number(route.query.ep) || 1
 
-const netfilmUrl = `https://netfilm.world/spa/videoPlayPage/movies/${encodeURIComponent(detailPath)}?id=${encodeURIComponent(id)}&detailSe=${se}&detailEp=${ep}&lang=en&type=%2Fmovie%2Fdetail&page_from=streamlab`
+const netfilmUrl = `https://netfilm.world/spa/videoPlayPage/movies/${encodeURIComponent(detailPath)}?id=${encodeURIComponent(id)}&detailSe=&detailEp=&lang=en&type=%2Fmovie%2Fdetail&page_from=streamlab`
 </script>

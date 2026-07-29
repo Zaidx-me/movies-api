@@ -4,8 +4,6 @@ export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
   const query = getQuery(event)
   const detailPath = query.detail_path as string
-  const se = (query.se as string) || '1'
-  const ep = (query.ep as string) || '1'
   if (!id || !detailPath) throw createError({ statusCode: 400, message: 'Missing id or detail_path' })
 
   return {
@@ -13,6 +11,6 @@ export default defineEventHandler(async (event) => {
     sources: [],
     hls: [],
     dash: [],
-    netfilmUrl: `https://netfilm.world/spa/videoPlayPage/movies/${encodeURIComponent(detailPath)}?id=${encodeURIComponent(id)}&detailSe=${se}&detailEp=${ep}&lang=en&type=%2Fmovie%2Fdetail&page_from=streamlab`,
+    netfilmUrl: `https://netfilm.world/spa/videoPlayPage/movies/${encodeURIComponent(detailPath)}?id=${encodeURIComponent(id)}&detailSe=&detailEp=&lang=en&type=%2Fmovie%2Fdetail&page_from=streamlab`,
   }
 })
