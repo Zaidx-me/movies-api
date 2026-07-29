@@ -2,7 +2,10 @@
   <div class="fixed inset-0 bg-black z-50 flex flex-col">
     <button @click="goBack" class="absolute top-4 left-4 z-50 bg-black/60 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-black/80 transition">← Back</button>
     <div class="flex-1 flex items-center justify-center">
-      <VideoPlayer v-if="video" :video="video" :sources="sources" :subtitles="subtitles" />
+      <VideoPlayer v-if="video && sources.length" :video="video" :sources="sources" :subtitles="subtitles" />
+      <div v-else-if="netfilmUrl" class="w-full h-full">
+        <iframe :src="netfilmUrl" class="w-full h-full border-0" allowfullscreen allow="autoplay; fullscreen" />
+      </div>
       <div v-else-if="loading" class="text-gray-400 p-8">Loading...</div>
       <div v-else-if="error" class="text-red-400 p-8 text-center">
         <p>{{ error }}</p>
@@ -25,24 +28,27 @@ const player = usePlayer()
 const video = ref<any>(null)
 const sources = ref<any[]>([])
 const subtitles = ref<any[]>([])
+const netfilmUrl = ref<string | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
 async function load() {
-  loading.value = true; error.value = null
+  loading.value = true; error.value = null; netfilmUrl.value = null
   try {
     const streamData = await getStream(id, detailPath, se, ep)
-    const sources = (streamData?.sources || []).map((s: any) => ({
+    const mappedSources = (streamData?.sources || []).map((s: any) => ({
       ...s,
       type: s.format?.toLowerCase()?.includes('dash') ? 'dash' : 'hls',
     }))
-    if (!streamData?.has_resource && sources.length === 0) {
+    if (streamData?.netfilmUrl) {
+      netfilmUrl.value = streamData.netfilmUrl
+      video.value = { id, title: detailPath, duration: 0 }
+    } else if (mappedSources.length > 0) {
+      video.value = { id, title: detailPath, duration: 0 }
+      sources.value = mappedSources
+    } else {
       error.value = 'No streaming source available for this title.'
-      loading.value = false
-      return
     }
-    video.value = { id, title: detailPath, duration: 0 }
-    sources.value = sources
     try {
       const capData = await getCaptions(id, detailPath, se, ep)
       subtitles.value = (capData?.captions || capData?.subtitles || []).map((c: any) => ({
